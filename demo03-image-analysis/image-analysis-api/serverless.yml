@@ -1,0 +1,23 @@
+org: francoatmega
+app: image-analysis
+service: image-analysis-api
+frameworkVersion: '3'
+
+
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  iamRoleStatements:
+    - Effect: 'Allow'
+      Action: 
+        - rekognition:DetectLabels
+      Resource: '*'
+
+functions:
+  analyse:
+    handler: handler.analyse
+    events:
+      - httpApi:
+          path: /analyse
+          method: get
