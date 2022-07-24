@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "@hapi/joi": "^17.1.1",
+    "aws-sdk": "^2.1181.0"
+  },
+  "scripts": {
+    "invoke:local": "sls invoke local --function user-insert --path mocks/userInsert.json",
+    "watch": "sls logs --function user-trigger -i 5000"
+  }
+}
