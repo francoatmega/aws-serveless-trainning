@@ -1,0 +1,38 @@
+org: francoatmega
+app: cron-schedule
+service: envs
+plugins:
+  - serverless-dotenv-plugin
+useDotenv: true
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  stage: ${opt:stage, "dev"}
+  region: us-east-2
+  environment:
+  iamRoleStatements: 
+    ${file(./serverless/db.iam.role.yml)}
+
+resources:
+  Resources: 
+    ${file(./resources/dynamo.aws-ips.table.yml)}
+
+custom:
+  scheduleRate: rate(1 minute)
+  enabled: true
+  tableName: ${env:TABLE_NAME}
+  dbWriteCapacity: ${env:WRITE_CAPACITY}
+  dbReadCapacity: ${env:READ_CAPATICY}
+
+functions:
+  function-scheduler:
+    handler: handler.scheduler
+    events:
+      - schedule:
+          rate: ${self:custom.scheduleRate}
+          name: name-schedule-aws-ip-${self:provider.stage}
+          description: Get aws ip ranges over 1 minute
+          enabled: ${self:custom.enabled}

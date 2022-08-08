@@ -1,0 +1,21 @@
+Table:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:custom.tableName}
+        AttributeDefinitions:
+          -
+            AttributeName: id
+            AttributeType: S
+          -
+            AttributeName: commitMessage
+            AttributeType: S
+        KeySchema:
+          - 
+            AttributeName: id
+            KeyType: HASH
+          - 
+            AttributeName: commitMessage
+            KeyType: RANGE
+        ProvisionedThroughput:
+          WriteCapacityUnits: ${self:custom.dbReadCapacity}
+          ReadCapacityUnits: ${self:custom.dbWriteCapacity}

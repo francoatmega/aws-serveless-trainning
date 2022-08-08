@@ -1,0 +1,9 @@
+NODE_ENV="DEVELOPMENT"
+
+BASE_URL="https://your-url.com"
+
+TABLE_NAME="your_database"
+
+WRITE_CAPACITY="1"
+
+READ_CAPATICY="1"
