@@ -33,6 +33,6 @@ functions:
     events:
       - schedule:
           rate: ${self:custom.scheduleRate}
-          name: name-schedule-aws-ip-${self:provider.stage}
-          description: Get aws ip ranges over 1 minute
+          name: commit-messages-schedule-${self:provider.stage}
+          description: Get commit messages
           enabled: ${self:custom.enabled}
