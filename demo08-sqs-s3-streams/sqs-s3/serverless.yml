@@ -1,0 +1,30 @@
+org: francoatmega
+app: sqs-s3
+service: sqs-s3
+
+frameworkVersion: '3'
+
+plugins:
+  - serverless-dotenv-plugin
+  - serverless-localstack
+  - serverless-mocha-plugin
+  - serverless-offline
+
+useDotenv: true
+
+custom:
+  serverless-offline: 
+    useChildProcesses: true
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  stage: ${opt:stage, "dev"}
+
+functions:
+  hello:
+    handler: handler.hello
+    events:
+      - http:
+          method: get
+          path: hello
