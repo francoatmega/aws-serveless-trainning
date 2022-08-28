@@ -14,17 +14,56 @@ useDotenv: true
 
 custom:
   serverless-offline: 
-    useChildProcesses: true
+  useChildProcesses: true
+  sqsArn:
+    Fn::GetAtt: 
+      - SQSQueue
+      - Arn
 
 provider:
   name: aws
   runtime: nodejs14.x
   stage: ${opt:stage, "dev"}
+  iamRoleStatements:
+    - Effect: Allow
+      Action: 
+        - sqs:CreateQueue
+        - sqs:ReceiveMessage
+        - sqs:SendMessage
+        - sqs:GetQeueUrl
+      Resource: ${self:custom.sqsArn}
+    - Effect: Allow
+      Action: 
+        - s3:*
+      Resource: 
+        - arn::aws::s3:::${env:BUCKET_NAME}/*
+        - arn::aws::s3:::${env:BUCKET_NAME}/*
+
+package:
+  individually: true
+  excludeDevDependencies: true
 
 functions:
-  hello:
-    handler: handler.hello
+  s3listener:
+    handler: src/index.s3listener
     events:
-      - http:
-          method: get
-          path: hello
+      - s3:
+          bucket: ${env:BUCKET_NAME}
+          event: s3:ObjectCreated:*
+          rules:
+            - suffix: .csv
+
+  sqslistener:
+    handler: src/index.sqslistener
+    events:
+      - sqs:
+          batchSize: 1
+          arn: ${self:custom.sqsArn}
+
+resources:
+  Resources:
+    SQSQueue:
+      Type: AWS::SQS::Queue
+      Properties:
+        QueueName: ${env:QUEUE_NAME}
+        VisibilityTimeout: 60
