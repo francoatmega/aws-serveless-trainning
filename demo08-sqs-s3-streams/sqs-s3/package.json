@@ -23,6 +23,7 @@
     "serverless-offline": "^9.2.0"
   },
   "dependencies": {
-    "aws-sdk": "^2.1194.0"
+    "aws-sdk": "^2.1194.0",
+    "env-var": "^7.1.1"
   }
 }

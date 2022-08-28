@@ -1,6 +1,5 @@
 'use strict';
-const envs = require('./serverless/envs-validation')
-
+require('../serverless/envs-validation')
 class Handler {
   static async main(args) {
     try {
