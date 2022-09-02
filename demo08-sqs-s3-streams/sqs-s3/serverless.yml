@@ -24,20 +24,20 @@ provider:
   name: aws
   runtime: nodejs14.x
   stage: ${opt:stage, "dev"}
-  iamRoleStatements:
-    - Effect: Allow
-      Action: 
-        - sqs:CreateQueue
-        - sqs:ReceiveMessage
-        - sqs:SendMessage
-        - sqs:GetQeueUrl
-      Resource: ${self:custom.sqsArn}
-    - Effect: Allow
-      Action: 
-        - s3:*
-      Resource: 
-        - arn::aws::s3:::${env:BUCKET_NAME}/*
-        - arn::aws::s3:::${env:BUCKET_NAME}/*
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action: 
+            - sqs:CreateQueue
+            - sqs:ReceiveMessage
+            - sqs:SendMessage
+            - sqs:GetQeueUrl
+          Resource: ${self:custom.sqsArn}
+        - Effect: Allow
+          Action:
+            - s3:*
+          Resource: "*"
 
 package:
   individually: true
