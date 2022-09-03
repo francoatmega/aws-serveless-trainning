@@ -1,0 +1,38 @@
+{
+    "Records": [
+        {
+            "eventVersion": "2.1",
+            "eventSource": "aws:s3",
+            "awsRegion": "us-east-1",
+            "eventTime": "2022-09-03T02:13:02.177Z",
+            "eventName": "ObjectCreated:Put",
+            "userIdentity": {
+                "principalId": "A1BI6GIEW2HV3E"
+            },
+            "requestParameters": {
+                "sourceIPAddress": "177.37.133.204"
+            },
+            "responseElements": {
+                "x-amz-request-id": "P75W7KJQKK26HVGC",
+                "x-amz-id-2": "WRuFtK66S4eJHwS7/AxcwfF+f1ord9ELaazLeKH3l9nMU/NuAAQAly7OXuk7FHPtx7tqjBveU74Xa4Ikkt97Ef2mCmFdnYyg"
+            },
+            "s3": {
+                "s3SchemaVersion": "1.0",
+                "configurationId": "sqs-s3-dev-s3listener-60af9c4c9230acd8c32e15324d0f5384",
+                "bucket": {
+                    "name": "bucket-aws-serverless-module-8-28-08-2022",
+                    "ownerIdentity": {
+                        "principalId": "A1BI6GIEW2HV3E"
+                    },
+                    "arn": "arn:aws:s3:::bucket-aws-serverless-module-8-28-08-2022"
+                },
+                "object": {
+                    "key": "2021.08+Website+Recall.xlsx+-+Plan1.csv",
+                    "size": 159469,
+                    "eTag": "388ff4ea40991a2282bc75f1dc5f3778",
+                    "sequencer": "006312B82E25198D15"
+                }
+            }
+        }
+    ]
+}
