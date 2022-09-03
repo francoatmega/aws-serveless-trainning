@@ -6,7 +6,7 @@ frameworkVersion: '3'
 
 plugins:
   - serverless-dotenv-plugin
-  - serverless-localstack
+  # - serverless-localstack
   - serverless-mocha-plugin
   - serverless-offline
 
@@ -52,6 +52,7 @@ functions:
           event: s3:ObjectCreated:*
           rules:
             - suffix: .csv
+          existing: true
 
   sqslistener:
     handler: src/index.sqslistener
