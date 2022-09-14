@@ -1,0 +1,20 @@
+{
+    "Records": [
+        {
+            "messageId": "0a8aac95-a48d-4139-91cf-1512ba50985f",
+            "receiptHandle": "AQEBgJTCPC9/Rq/vYq/c8BRpjB11/waKiAwGx4CBNjehm7yDOXDrViuC45YOO87h+C4KvY2s4V0RXq3P5oktMvXI8OUThep8alAyv6H9X3/tJ3xFC/vlLky1WNUsoyF71R4oG5U+cKv9I14gg7A0/8vWYdOR5eHTv2rSq925h8ctd7vT3qjxdjhVHMVTYYqtVj0Ph7yakfDQYvlWqpmwQpxGWioAVt5W6mSL18goAp0LuoL8lGlXEsn9nT9BVQ9MCp7UNlWURNCVZgmiv/1nQRD1k4RLjy2/IY2tciwKbKWrDUWdVKocO66nK5MfCzsiSJPv6zXTnOio/lvLCWTIPL5Nm2/VIMcQuwWV0ijWZgR8FXUHUvaK15SzAGP5gZ3PTjcdnkqUQQk2jc9xOp6eiUjAxyVgxyNIIm+9S600mIPOX4k=",
+            "body": "{ \"teste\": \"123\"}",
+            "attributes": {
+                "ApproximateReceiveCount": "1",
+                "SentTimestamp": "1663121272408",
+                "SenderId": "AIDATOI5E7Y3JN4VNO2WJ",
+                "ApproximateFirstReceiveTimestamp": "1663121272420"
+            },
+            "messageAttributes": {},
+            "md5OfBody": "8e6f6f815b50f474cf0dc22d4f400725",
+            "eventSource": "aws:sqs",
+            "eventSourceARN": "arn:aws:sqs:us-east-1:236821216822:sqs-aws-serverless-module-8-28-08-2022",
+            "awsRegion": "us-east-1"
+        }
+    ]
+}
