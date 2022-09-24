@@ -8,8 +8,11 @@
     "start": "npx nodemon --exec npm run offline",
     "offline:local": "npx sls offline start --host 0.0.0.0 --stage local",
     "offline:dev": "npx sls offline start --host 0.0.0.0 --stage dev",
+    "deploy:dev": "npx sls deploy --stage dev",
+    "invoke:s3:dev": "npx sls invoke -f s3listener --stage dev",
+    "invoke:sqs:dev": "npx sls invoke -f sqslistener --stage dev",
     "invoke:s3:local": "sls invoke local -f s3listener --stage local --path mocks/s3-event-trigger.json",
-    "invoke:sqs:local": "sls invoke local -f sqslistener --stage dev --path mocks/sqs-event-trigger.json"
+    "invoke:sqs:local": "sls invoke local -f sqslistener --stage local --path mocks/sqs-event-trigger.json"
   },
   "keywords": [],
   "author": "",
