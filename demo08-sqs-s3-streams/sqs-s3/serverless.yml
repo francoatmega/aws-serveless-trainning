@@ -29,11 +29,8 @@ provider:
       statements:
         - Effect: Allow
           Action: 
-            - sqs:CreateQueue
-            - sqs:ReceiveMessage
-            - sqs:SendMessage
-            - sqs:GetQeueUrl
-          Resource: ${self:custom.sqsArn}
+            - sqs:*
+          Resource: "*"
         - Effect: Allow
           Action:
             - s3:*
@@ -58,8 +55,8 @@ functions:
     handler: src/index.sqslistener
     events:
       - sqs:
+          arn: arn:aws:sqs:us-east-1:236821216822:sqs-aws-serverless-module-8-28-08-2022
           batchSize: 1
-          arn: ${self:custom.sqsArn}
 
 resources:
   Resources:
