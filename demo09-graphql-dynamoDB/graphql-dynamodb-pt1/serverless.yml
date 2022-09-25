@@ -1,0 +1,13 @@
+org: francoatmega
+app: dynamodb
+service: graphql-dynamodb-pt1
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+
+functions:
+  hello:
+    handler: handler.hello
