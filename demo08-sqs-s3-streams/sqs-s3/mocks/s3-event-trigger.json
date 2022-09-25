@@ -20,16 +20,16 @@
                 "s3SchemaVersion": "1.0",
                 "configurationId": "sqs-s3-dev-s3listener-60af9c4c9230acd8c32e15324d0f5384",
                 "bucket": {
-                    "name": "bucket-aws-serverless-module-8-28-08-2022",
+                    "name": "teste123123",
                     "ownerIdentity": {
                         "principalId": "A1BI6GIEW2HV3E"
                     },
                     "arn": "arn:aws:s3:::bucket-aws-serverless-module-8-28-08-2022"
                 },
                 "object": {
-                    "key": "2021.08+Website+Recall.xlsx+-+Plan1.csv",
+                    "key": "testFile.csv",
                     "size": 159469,
-                    "eTag": "388ff4ea40991a2282bc75f1dc5f3778",
+                    "eTag": "ac4995a13887a647283d7453edfe32ad",
                     "sequencer": "006312B82E25198D15"
                 }
             }
