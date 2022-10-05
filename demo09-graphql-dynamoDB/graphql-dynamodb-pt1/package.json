@@ -13,6 +13,7 @@
   "dependencies": {
     "apollo-server-lambda": "^3.10.2",
     "aws-sdk": "^2.1223.0",
+    "dynamoose": "^3.1.0",
     "graphql": "^16.6.0",
     "serverless-dotenv-plugin": "^4.0.2"
   },

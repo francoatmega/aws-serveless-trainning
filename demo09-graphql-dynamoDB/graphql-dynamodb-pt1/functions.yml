@@ -4,3 +4,17 @@ hello:
     - http:
         path: hello
         method: any
+
+graphql:
+  handler: src/index.graphql
+  events:
+    - http:
+        path: graphql
+        method: any
+
+test:
+  handler: src/index.test
+  events:
+    - http:
+        path: test
+        method: get
