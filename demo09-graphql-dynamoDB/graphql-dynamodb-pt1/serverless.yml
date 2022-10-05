@@ -7,7 +7,50 @@ frameworkVersion: '3'
 provider:
   name: aws
   runtime: nodejs14.x
+  region: ${opt:region, 'us-east-1'}
+  environment:
+    HEROES_TABLE: Heroes
+    SKILLS_TABLE: Skilss
+    LOCALSTACK_URL: ${env:LOCALSTACK_URL, "localhost"}
+    DYNAMODB_PORT: ${env:DYNAMODB_PORT, "4569"}
+  iamRoleStatements:
+    - Effect: Allow
+      Action: dynamodb:*
+      Resource:
+        - "arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.HEROES_TABLE}"
+        - "arn:aws:dynamodb:${self:provider.region}:*:table/${self:provider.environment.SKILLS_TABLE}"
+
+package:
+  excludeDevDependencies: true
+  individually: true
+
+custom:
+  dynamodb:
+    stages:
+      - "${self:provider.region}"
+    start:
+      host: "${self:provider.environment.LOCALSTACK_URL}"
+      port: "${self:provider.environment.DYNAMODB_PORT}"
+      migrate: true
+      noStart: true
+      seed: true
+    seed:
+      heroes:
+        sources:
+          - table: ${self:provider.environment.HEROES_TABLE}
+            sources: ['./seeds/heroes.json']
+      skills:
+        sources:
+          - table: ${self:provider.environment.SKILLS_TABLE}
+            sources: ['./seeds/skills.json']
+
+plugins:
+  - serverless-dotenv-plugin
+  - serverless-dynamodb-local
+  - serverless-offline
 
 functions:
-  hello:
-    handler: handler.hello
+  ${file(./functions.yml)}
+
+resources:
+  ${file(./resources.yml)}

@@ -1,0 +1,6 @@
+hello:
+  handler: src/index.dynamoDB
+  events:
+    - http:
+        path: hello
+        method: any
