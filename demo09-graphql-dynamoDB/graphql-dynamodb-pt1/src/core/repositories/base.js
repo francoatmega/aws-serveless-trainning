@@ -6,15 +6,15 @@ class BaseRepository {
     }
 
     async create(item) {
-        return promisify(this.schema.create)(item)
+        return this.schema.create(item)
     }
 
     async findOne(id) {
-        return promisify(this.schema.query)({ id: { eq:  id }})
+        return this.schema.query({ id: { eq:  id }}).exec()
     }
 
     async findAll(query) {
-        return promisify(this.schema.scan)(query)
+        return this.schema.scan(query).exec()
     }
 }
 

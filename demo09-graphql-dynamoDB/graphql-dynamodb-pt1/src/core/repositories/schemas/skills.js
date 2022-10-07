@@ -1,5 +1,5 @@
 const dynamoose = require('dynamoose')
-const schema = dynamoose.Schema({
+const schema = new dynamoose.Schema({
     id: {
         type: String,
         required: true,

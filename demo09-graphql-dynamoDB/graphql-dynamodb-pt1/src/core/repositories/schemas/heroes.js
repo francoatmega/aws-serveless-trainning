@@ -9,10 +9,10 @@ const schema = new dynamoose.Schema({
         type: String,
         required: true,
     },
-    skills: [{
+    skillId:{
         type: String,
         required: true,
-    }],
+    }
 })
 
 module.exports = dynamoose.model(
