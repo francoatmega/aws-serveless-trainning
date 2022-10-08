@@ -1,20 +1,10 @@
 const { ApolloServer, gql } = require('apollo-server-lambda');
 
-const typeDefs = gql`
-  type Query {
-    hello: String
-  }
-`;
-
-const resolvers = {
-  Query: {
-    hello: () => 'Hello world!',
-  },
-};
+const { schema, resolvers } = require('./graphql/core')
 
 const server = new ApolloServer({
-  typeDefs,
-  resolvers,
+  typeDefs: schema,
+  resolvers: resolvers,
 });
 
 module.exports = server.createHandler({
