@@ -1,18 +1,20 @@
 const resolvers = {
     Query: {
         async getSkill(root, args, context, info) {
-            return 'getSkill'
+            return context.Skill.findAll(args)
         },
         async getHero(root, args, context, info) {
-            return 'getHero'
+            return context.Hero.findAll(args)
         }
     },
     Mutation: {
         async createSkill(root, args, context, info) {
-            return 'createSkill'
+            const { id } = await context.Skill.create(args)
+            return id
         },
         async createHero(root, args, context, info) {
-            return 'createHero'
+            const { id } = await context.Hero.create(args)
+            return id
         }
     }
 }
