@@ -1,6 +1,8 @@
 const jwt = require('jsonwebtoken')
 const db = require('../db/users.json')
-JWT_SECRET = '12312321-302190-21940'
+const { buildIAMPolicy, isAllowedScope } = require('./lib/util')
+
+const JWT_SECRET = '12312321-302190-21940'
 
 exports.login = async (event) => {
     try {
@@ -42,6 +44,35 @@ exports.login = async (event) => {
             statusCode: 500,
             body: JSON.stringify({
                 'message': 'Ocorreu um erro'
+            })
+        }
+    }
+}
+
+exports.authorizer = async (event) => {
+
+    const headerToken = event.authorizationToken;
+    const token = headerToken.split(' ')[1];
+
+    try {
+        
+        const tokenData = await jwt.verify(token, JWT_SECRET)
+
+        const authorizerContext = {
+            user: JSON.stringify(tokenData)
+        }
+
+        return buildIAMPolicy(
+            tokenData.user.username,
+            isAllowedScope(tokenData.user.scopes, event.methodArn) ? 'Allow' : 'Deny',
+            event.methodArn,
+            authorizerContext
+        )
+    } catch (e) {
+        return {
+            statusCode: 401,
+            body: JSON.stringify({
+                message: 'Unauthorized'
             })
         }
     }

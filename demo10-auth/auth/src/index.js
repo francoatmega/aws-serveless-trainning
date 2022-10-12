@@ -6,7 +6,10 @@ exports.public = async () => {
     }
 }
 
-exports.private = async () => {
+exports.private = async (event) => {
+    console.log({
+        'User': JSON.parse(event.requestContext.authorizer.user)
+    })
     return {
         statusCode: 200,
         body: 'private'
