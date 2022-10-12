@@ -1,0 +1,33 @@
+login:
+  handler: src/auth.login
+  events:
+    - http:
+        path: login
+        method: post 
+        cors: true
+
+heroes-public:
+  handler: src/index.public
+  events:
+    - http:
+        path: public
+        method: any
+        cors:
+          origins:
+            - "*"
+          headers: 
+            - Content-Type
+            - Authorization
+
+heroes-private:
+  handler: src/index.private
+  events:
+    - http:
+        path: private
+        method: any
+        cors:
+          origins:
+            - "*"
+          headers: 
+            - Content-Type
+            - Authorization

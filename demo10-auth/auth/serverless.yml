@@ -12,28 +12,4 @@ plugins:
   - serverless-offline
 
 functions:
-  heroes-public:
-    handler: src/getHeroes.public
-    events:
-      - http:
-          path: public
-          method: any
-          cors:
-            origins:
-              - "*"
-            headers: 
-              - Content-Type
-              - Authorization
-  heroes-private:
-    handler: src/getHeroes.private
-    events:
-      - http:
-          path: private
-          method: any
-          cors:
-            origins:
-              - "*"
-            headers: 
-              - Content-Type
-              - Authorization
-
+  ${file(./functions.yml)}
