@@ -1,0 +1,6 @@
+hello:
+    handler: handler.hello
+    events: 
+      - http:
+          path: /test
+          method: any

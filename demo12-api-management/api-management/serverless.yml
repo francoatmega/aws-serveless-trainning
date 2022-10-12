@@ -1,0 +1,15 @@
+org: francoatmega
+app: auth
+service: api-management
+
+plugins:
+  - "serverless-offline"
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+
+functions:
+  ${file("./functions.yml")}
