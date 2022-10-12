@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "nodemon": "^2.0.20",
+    "serverless": "^3.22.0",
+    "serverless-offline": "^11.1.0"
+  },
+  "scripts": {
+    "start": "npx nodemon --exec npx sls offline --host 0.0.0.0"
+  }
+}
