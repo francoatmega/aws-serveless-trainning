@@ -5,3 +5,17 @@ hello:
           path: /test
           method: any
           private: true
+
+get-usage:
+    handler: handler.getUsage
+    events:
+      - http:
+          path: /getUsage
+          method: get
+
+get-usage-api-key:
+    handler: handler.getUsagePlans
+    events:
+      - http:
+          path: /getUsagePlans
+          method: get
