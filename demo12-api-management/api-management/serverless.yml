@@ -10,6 +10,22 @@ frameworkVersion: '3'
 provider:
   name: aws
   runtime: nodejs14.x
+  apiGateway:
+    apiKeys:
+      - name: myFirstKey
+        value: 88V%uB#2VZ5R!Ke!h1m0
+        description: myPrimaryDescription
+      - name: mySecondKey
+        value: 2m^QpMnDol29a9Vl849%
+        description: mySecondDescription
+    usagePlan:
+      quota:
+        limit: 5000
+        offset: 2
+        period: MONTH
+      throttle:
+        burstLimit: 3
+        rateLimit: 10
 
 functions:
   ${file("./functions.yml")}
