@@ -19,3 +19,10 @@ get-usage-api-key:
       - http:
           path: /getUsagePlans
           method: get
+
+create-api-key:
+    handler: handler.createAPIKey
+    events:
+      - http:
+          path: /createAPI
+          method: post

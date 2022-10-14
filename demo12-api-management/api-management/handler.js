@@ -50,3 +50,27 @@ module.exports.getUsagePlans = async (event) => {
     ),
   };
 };
+
+module.exports.createAPIKey = async (event) => {
+  const {
+    name,
+    planId
+  } = event.queryStringParameters
+  const apiKey = await apiGateway.createApiKey({
+    name: name,
+    enabled: true
+  }).promise();
+  await apiGateway.createUsagePlanKey({
+    keyId: apiKey.id,
+    usagePlanId: planId,
+    keyType: 'API_KEY'
+  }).promise()
+  return {
+    statusCode: 200,
+    body: JSON.stringify(
+      apiKey,
+      null,
+      2
+    ),
+  };
+};

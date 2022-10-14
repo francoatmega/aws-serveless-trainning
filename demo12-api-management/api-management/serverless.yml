@@ -10,6 +10,13 @@ frameworkVersion: '3'
 provider:
   name: aws
   runtime: nodejs14.x
+  region: ${opt:region, 'us-east-1'}
+  iamRoleStatements:
+    - Effect: Allow
+      Action: 
+        - apigateway:*
+      Resource: 
+        - arn:aws:apigateway:${self:provider.region}::/*
   apiGateway:
     apiKeys:
       - name: myFirstKey
