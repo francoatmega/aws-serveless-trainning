@@ -5,7 +5,8 @@
   "main": "handler.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npx nodemon --exec npx sls offline --host 0.0.0.0"
+    "start:local": "npx nodemon --exec npx sls offline --host 0.0.0.0 --stage local",
+    "start:dev": "npx nodemon --exec npx sls offline --host 0.0.0.0 --stage dev"
   },
   "keywords": [],
   "author": "",

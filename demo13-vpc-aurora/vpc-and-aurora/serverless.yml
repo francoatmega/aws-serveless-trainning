@@ -8,12 +8,29 @@ plugins:
   - serverless-dotenv-plugin
   - serverless-offline
 
+useDotenv: true
+
 package:
   excludeDevDependencies: true
 
 provider:
   name: aws
   runtime: nodejs14.x
+  environment:
+    MYSQL_DATABASE: ${env:MYSQL_DATABASE}
+    MYSQL_USERNAME: ${env:MYSQL_USERNAME}
+    MYSQL_PASSWORD: ${env:MYSQL_PASSWORD}
+    MYSQL_HOST: ${env:MYSQL_HOST}
+  vpc:
+    securityGroupIds:
+      - sg-d5c684cb
+    subnetIds:
+      - subnet-524abd1e
+      - subnet-b4260b95
+      - subnet-3e28420f
+      - subnet-7baf8f24
+      - subnet-19ac8b7f
+      - subnet-76b0a978
 
 functions:
   hello:

@@ -10,10 +10,10 @@ class Handler {
     try {
         await sequelize.authenticate();
         Heroe.sync()
-        // Heroe.create({
-        //   nome: faker.internet.userName(),
-        //   poder: faker.helpers.arrayElement(['visao além do alcance', 'super sopro', 'raio choque'])
-        // })
+        Heroe.create({
+          nome: faker.internet.userName(),
+          poder: faker.helpers.arrayElement(['visao além do alcance', 'super sopro', 'raio choque'])
+        })
         const heroes = await Heroe.findAll();
         return {
           statusCode: 200,
