@@ -4,10 +4,22 @@ service: vpc-and-aurora
 
 frameworkVersion: '3'
 
+plugins:
+  - serverless-dotenv-plugin
+  - serverless-offline
+
+package:
+  excludeDevDependencies: true
+
 provider:
   name: aws
   runtime: nodejs14.x
 
 functions:
   hello:
-    handler: handler.hello
+    handler: src/index.handler
+    events:
+      - http:
+          path: /hello
+          method: get
+ 
