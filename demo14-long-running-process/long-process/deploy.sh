@@ -1,0 +1,1 @@
+echo "Fazendo deploy da aplicação no ecr..."
